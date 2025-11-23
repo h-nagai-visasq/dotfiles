@@ -47,7 +47,7 @@
     root = ~/src
     root = ~/projects
 [user]
-	name = hidetoshing
-	email = hidetoshing@gmail.com
+	name = hidetoshi.nagai
+	email = hidetoshi.nagai@visasq.com
 [pull]
 	ff = only

@@ -57,7 +57,7 @@ return {
         "https://github.com/stevearc/aerial.nvim",
         event = { "BufReadPost", "BufWritePost", "BufNewFile" },
         keys = {
-            { "<leader>wa", "<cmd>AerialToggle<cr>", desc = "toggle Aerial" },
+            { "<leader>wa", "<cmd>AerialOpen<cr>", desc = "toggle Aerial" },
             { "<leader>wf", "<cmd>AerialFocus<cr>",  desc = "focus Aerial" },
             -- etc.
         },

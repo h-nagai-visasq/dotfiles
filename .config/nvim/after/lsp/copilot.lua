@@ -45,17 +45,17 @@ return {
                     if vim.fn.pumvisible() == 1 then
                         return '<c-e>'
                     end
-                end, { silent = true, expr = true, buffer = bufnr })
+                end, { silent = true, expr = true, buffer = bufnr, desc = "Accept Copilot suggestion"})
 
                 -- next
                 vim.keymap.set('i', '<c-n>', function()
                     vim.lsp.inline_completion.select()
-                end, { silent = true, buffer = bufnr })
+                end, { silent = true, buffer = bufnr, desc = "Next Copilot suggestion"})
 
                 -- prev
                 vim.keymap.set('i', '<c-p>', function()
                     vim.lsp.inline_completion.select({ count = -1 * vim.v.count1 })
-                end, { silent = true, buffer = bufnr })
+                end, { silent = true, buffer = bufnr, desc = "Previous Copilot suggestion"})
             end,
         })
     end,

@@ -34,7 +34,18 @@ return {
                 theme = "tokyonight-night",
             },
             sections = {
-                lualine_c = { 'filename', 'aerial' },
+                lualine_c = {
+                    {
+                        'filename',
+                        symbols = {
+                            modified = '󱇧',      -- Text to show when the file is modified.
+                            readonly = '󰈡',      -- Text to show when the file is non-modifiable or readonly.
+                            unnamed = '󰡯', -- Text to show for unnamed buffers.
+                            newfile = '󰝒',     -- Text to show for newly created file before first write
+                        }                    
+                    },
+                    'aerial'
+                },
                 lualine_x = {
                     'encoding',
                     'filetype',
@@ -43,7 +54,7 @@ return {
                 },
                 lualine_z = {
                     'location',
-                    "require'config.helper_lualine'.current_time()"
+                    --"require'config.helper_lualine'.current_time()"
                 },
             },
             tabline = {
@@ -51,7 +62,7 @@ return {
                 lualine_b = { {
                     "buffers",
                     symbols = {
-                        modified = '● ',      -- Text to show when the buffer is modified
+                        modified = ' ●',      -- Text to show when the buffer is modified
                         alternate_file = ' ', -- Text to show to identify the alternate file
                         directory =  ' ',     -- Text to show when the buffer is a directory
                     },

@@ -11,6 +11,7 @@ return {
 
     ---@module 'blink.cmp'
     opts = {
+        -- enabled = function() return not vim.tbl_contains({ "markdown" }, vim.bo.filetype) end,
         completion = {
             documentation = {
                 window = { border = "rounded" },
@@ -18,6 +19,7 @@ return {
                 auto_show_delay_ms = 500,
             },
             menu = {
+                auto_show = function() return not vim.tbl_contains({ "markdown" }, vim.bo.filetype) end,
                 border = "rounded",
                 draw = {
                     treesitter = { 'lsp' },
@@ -29,6 +31,5 @@ return {
             enabled = true,
             window = { border = "rounded" },
         },
-
     },
 }
