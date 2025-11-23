@@ -36,5 +36,8 @@ require("lazy").setup({
         { import = "plugins.telescope" },
         -- filetree
         { import = "plugins.filetree" },
+
+        -- editing
+        { import = "plugins.obsidian" },
     },
 })

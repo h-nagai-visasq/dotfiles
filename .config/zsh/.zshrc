@@ -33,3 +33,8 @@ autoload -U compinit && compinit
 # plugins
 source $XDG_CONFIG_HOME/zsh/.zinit
 
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/hidetoshi.nagai/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions
