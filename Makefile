@@ -1,4 +1,3 @@
-
 XDG_CONFIG_HOME ?= ${HOME}/.config
 XDG_DATA_HOME ?= ${HOME}/.local/share
 USER_HOME ?= ${HOME}
@@ -8,15 +7,19 @@ $(USER_HOME)/%: ${CURDIR}/%
 	mkdir -p $(@D)
 	ln -fs $^ $@
 
+$(XDG_CONFIG_HOME)/%: ${CURDIR}/.config/%
+	mkdir -p $(@D)
+	ln -fs $^ $@
+
 # config rule
-.PRECIOUS ${CURDIR}/%:
+.PRECIOUS: ${CURDIR}/%
 	touch $@
 
 .PHONY: help
 help: ## make taskの説明を表示する
 	@grep --no-filename -E '^[0-9a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
-# cean
+# clean
 clean: ## - cleanup config w/o bashrc
 	rm -fr $(XDG_CONFIG_HOME)/git
 	rm -fr $(XDG_CONFIG_HOME)/nvim
@@ -31,7 +34,6 @@ clean: ## - cleanup config w/o bashrc
 # - config all
 configure: zsh git wezterm vim tmux screen ## configure all
 	@echo "configured"
-
 
 # install from homebrew
 brew-install:
@@ -55,7 +57,7 @@ zsh: $(XDG_CONFIG_HOME)/zsh/.zshrc $(XDG_CONFIG_HOME)/zsh/.zshalias $(XDG_CONFIG
 	@echo "zsh completed"
 
 wezterm: $(XDG_CONFIG_HOME)/wezterm/wezterm.lua ## wezterm config
-	@echo "zsh completed"
+	@echo "wezterm completed"
 
 # bash not install by configure
 bash: $(USER_HOME)/.bashrc ## bash config
@@ -66,18 +68,14 @@ git: $(XDG_CONFIG_HOME)/git/config $(XDG_CONFIG_HOME)/git/ignore  ## git config
 	@echo "git completed"
 
 # vim
-vim: $(XDG_CONFIG_HOME)/nvim/init.lua ## nvim config
-	ln -fs ${CURDIR}/.config/nvim/lua $(XDG_CONFIG_HOME)/nvim/lua
-	ln -fs ${CURDIR}/.config/nvim/after $(XDG_CONFIG_HOME)/nvim/after
-	ln -fs ${CURDIR}/.config/nvim/lsp $(XDG_CONFIG_HOME)/nvim/lsp
+vim: $(XDG_CONFIG_HOME)/nvim/init.lua $(XDG_CONFIG_HOME)/nvim/lua $(XDG_CONFIG_HOME)/nvim/after ## nvim config
 	@echo "neovim completed"
 
 # tmux
 tmux: $(XDG_CONFIG_HOME)/tmux/tmux.conf ## tmux config
-	git clone https://github.com/tmux-plugins/tpm $(XDG_CONFIG_HOME)/tmux/plugins/tpm
+	if [ ! -d $(XDG_CONFIG_HOME)/tmux/plugins/tpm ]; then git clone https://github.com/tmux-plugins/tpm $(XDG_CONFIG_HOME)/tmux/plugins/tpm; fi
 	@echo "tmux completed"
 
 # optional
 screen: $(USER_HOME)/.screenrc ## screen config
 	@echo "screen completed"
-
