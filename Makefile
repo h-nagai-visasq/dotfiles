@@ -26,6 +26,7 @@ clean: ## - cleanup config w/o bashrc
 	rm -fr $(XDG_DATA_HOME)/nvim
 	rm -fr $(XDG_CONFIG_HOME)/tmux
 	rm -fr $(XDG_CONFIG_HOME)/zsh
+	rm -fr $(XDG_CONFIG_HOME)/starship.toml
 	rm -fr $(XDG_CONFIG_HOME)/wezterm
 	rm $(USER_HOME)/.screenrc
 	rm $(USER_HOME)/.zshenv
@@ -47,10 +48,15 @@ brew-install:
 	if ! command -v tree-sitter &> /dev/null; then brew install tree-sitter-cli tree-sitter; fi
 	if ! command -v luajit &> /dev/null; then brew install luajit luarocks lua-language-server; fi
 	if ! command -v nvim &> /dev/null; then brew install --HEAD neovim; fi
+	if ! command -v starship &> /dev/null; then brew install starship; fi
 
 # install wezterm from homebrew
 brew-install-weaterm: ## install wezterm from homebrew
 	brew install --cask wezterm
+
+# install starship from homebrew
+brew-install-starship: ## install starship from homebrew
+	brew install starship
 
 # zsh
 zsh: $(XDG_CONFIG_HOME)/zsh/.zshrc $(XDG_CONFIG_HOME)/zsh/.zshalias $(XDG_CONFIG_HOME)/zsh/.zprofile $(XDG_CONFIG_HOME)/zsh/.zinit $(USER_HOME)/.zshenv ## zsh config
