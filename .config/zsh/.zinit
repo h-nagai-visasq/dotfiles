@@ -28,11 +28,6 @@ autoload -Uz _zinit
 #     zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 # fi
 
-## prompt
-zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
-zinit light sindresorhus/pure
 
 zinit light "hidetoshing/zsh-git-commands"
-zinit light "hidetoshing/zsh-easy-history"
 zinit light "hidetoshing/zsh-cd-util"
-

@@ -47,7 +47,9 @@
     root = ~/src
     root = ~/projects
 [user]
-	name = hidetoshi.nagai
-	email = hidetoshi.nagai@visasq.com
+	name = hidetoshing
+	email = hidetoshing@gmail.com
 [pull]
 	ff = only
+[init]
+	defaultBranch = main
