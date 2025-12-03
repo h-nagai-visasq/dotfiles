@@ -13,7 +13,6 @@ return {
             "BufNewFile "  .. vim.fn.expand "~" .. "/Documents/default/*.md",
         },
         ---@module 'obsidian'
-        ---@type obsidian.config
         opts = {
             workspaces = {
                 {
