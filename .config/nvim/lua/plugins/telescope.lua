@@ -81,7 +81,7 @@ return {
         "https://github.com/nvim-telescope/telescope-ghq.nvim",
         dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
         keys = {
-            { "<leader>gh", "<cmd>Telescope ghq list<CR>", desc = "List local repositories" },
+            { "<leader>Gh", "<cmd>Telescope ghq list<CR>", desc = "List local repositories" },
         },
         config = function(_, opts)
             require("telescope").load_extension("ghq")

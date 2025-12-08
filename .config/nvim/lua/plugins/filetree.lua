@@ -20,6 +20,7 @@ return {
         },
         opts = {
             open_files_using_relative_paths = true,
+            close_if_last_window = true,
             filesystem = {
                 filtered_items = {
                     visible = true, -- This will show hidden files
