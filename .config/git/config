@@ -10,14 +10,9 @@
     br = branch
     p = add -p
     st = status
-    # ログをグラフ表示されるように
-    l = log --graph --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(green)- %an, %cr%Creset'
-    tree = log --oneline --decorate --graph
-	last = log -1 HEAD
-	whatsnew = log HEAD@{1}..HEAD --reverse
-	whatsnewly = log HEAD@{1}..HEAD -p --reverse
-    fulllog = log --decorate=full
-	ranking = shortlog -s -n --no-merges
+    save = stash save -u
+    web = "!gh repo view --web"
+    l = log --oneline --decorate --graph --branches --tags --remotes --all
     # mergeコミットコメントはデフォルトのままで($EDITORを開かない)
     merge = merge --no-edit
     # mergeコミットはそのままでrebaseする
@@ -33,19 +28,16 @@
     # masterに移動して、最新に更新 + 不要ブランチを削除
     done = "!f() { git checkout master && git up && git bclean; }; f"
     # これを叩くと`git co pr/{pullreq-number}`でPRをチェックアウトできるようになる
-    pr-setup = config --add remote.origin.fetch +refs/pull/*/head:refs/remotes/origin/pr/*
-
-	edit-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; vim `f`"
-	add-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; git add `f`"
-    cmm = commit -m
+    pr-setup = config --add remote.origin.fetch +refs/pull/*/head:refs/remotes/origin/pr/*s
+    aliases = !git config --get-regexp alias |  sed 's/^alias.//g' | sed 's/ / = /1'
 [color]
     ui = true
 [core]
 	editor = vim
     excludesfile = ~/.config/git/ignore
 [ghq]
-    root = ~/src
     root = ~/projects
+    root = ~/src
 [user]
 	name = hidetoshing
 	email = hidetoshing@gmail.com

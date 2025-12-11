@@ -82,6 +82,11 @@ tmux: $(XDG_CONFIG_HOME)/tmux/tmux.conf ## tmux config
 	if [ ! -d $(XDG_CONFIG_HOME)/tmux/plugins/tpm ]; then git clone https://github.com/tmux-plugins/tpm $(XDG_CONFIG_HOME)/tmux/plugins/tpm; fi
 	@echo "tmux completed"
 
+# starship
+starship: $(XDG_CONFIG_HOME)/starship.toml ## starship config
+	@echo "starship completed"
+
+
 # optional
 screen: $(USER_HOME)/.screenrc ## screen config
 	@echo "screen completed"

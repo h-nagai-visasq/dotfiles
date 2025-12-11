@@ -12,8 +12,10 @@ return {
             "BufReadPre " .. vim.fn.expand "~" .. "/Documents/default/*.md",
             "BufNewFile "  .. vim.fn.expand "~" .. "/Documents/default/*.md",
         },
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+        },
         ---@module 'obsidian'
-        ---@type obsidian.config
         opts = {
             workspaces = {
                 {
@@ -22,6 +24,22 @@ return {
                 },
             },
             legacy_commands = false,
+            daily_notes = {
+                folder = "daily-notes",
+                date_format = "%Y-%m-%d",
+                template = "_templates/daily-notes.md",
+            },
+            note_id_func = function(title)
+                if title ~= nil then
+                    return title:gsub('[\\/:%*%?"<>|]', "")
+                else
+                    return tostring(os.time())
+                end
+            end,
+            note_path_func = function(spec)
+                local current_dir = vim.fn.expand("%:p:h")
+                return require("plenary.path"):new(current_dir) / (spec.id .. ".md")
+            end,
         },
         config = function(_, opts)
             vim.opt.conceallevel = 1 -- for markdown view
