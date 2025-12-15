@@ -15,6 +15,7 @@ $cmd_duration
 """
 
 format = """
+$hostname\
 $directory\
 $git_branch\
 $git_status
@@ -24,7 +25,14 @@ $character
 
 [username]
 format = '[󰀉 $user]($style) '
-show_always = true
+#show_always = true
+style = 'bright-green'
+
+[hostname]
+ssh_only = false
+format = '[󰛳 $hostname $ssh_symbol]($style) '
+ssh_symbol = '󰌘 '
+style = 'bright-cyan'
 
 [directory]
 truncation_length = 5
