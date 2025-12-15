@@ -30,8 +30,8 @@ style = 'bright-green'
 
 [hostname]
 ssh_only = false
-format = '[󰛳 $hostname $ssh_symbol]($style) '
-ssh_symbol = '󰌘 '
+format = '[󰛳 $hostname$ssh_symbol]($style) '
+ssh_symbol = ' 󰌘 '
 style = 'bright-cyan'
 
 [directory]
@@ -42,6 +42,7 @@ style = 'bold blue'
 repo_root_style = 'underline bold blue'
 repo_root_format = '[󰉋 $before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style) '
 truncation_symbol = '…/'
+read_only = '  Read Only '
 format = '[󱂵 $path]($style)[$read_only]($read_only_style) '
 
 [cmd_duration]
