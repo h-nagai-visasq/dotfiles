@@ -15,13 +15,18 @@ $cmd_duration
 """
 
 format = """
-$hostname\
 $directory\
 $git_branch\
-$git_status
-$username\
+$git_status\
+$fill \
+$hostname\
+$username
 $character
 """
+
+[fill]
+symbol = '-'
+style = 'fg:8'
 
 [username]
 format = '[󰀉 $user]($style) '
@@ -30,8 +35,8 @@ style = 'bright-green'
 
 [hostname]
 ssh_only = false
-format = '[󰛳 $hostname$ssh_symbol]($style) '
-ssh_symbol = ' 󰌘 '
+format = '[$ssh_symbol󰛳 $hostname]($style) '
+ssh_symbol = '󰌘 SSH 󰶻 '
 style = 'bright-cyan'
 
 [directory]
@@ -42,7 +47,7 @@ style = 'bold blue'
 repo_root_style = 'underline bold blue'
 repo_root_format = '[󰉋 $before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style) '
 truncation_symbol = '…/'
-read_only = '  Read Only '
+read_only = '  Read Only'
 format = '[󱂵 $path]($style)[$read_only]($read_only_style) '
 
 [cmd_duration]
@@ -52,16 +57,17 @@ style = 'fg:8'
 
 [git_branch]
 #ignore_branches = ['master', 'main']
-style = 'bold italic fg:8'
+style = 'italic fg:246'
 format = '[$symbol$branch(:$remote_branch)]($style) '
 symbol = ' '
 
 [git_status]
-style = 'italic fg:8'
-format = '([\[$ahead_behind\]]($style) )'
-ahead = '⇡${count}'
+style = 'italic fg:246'
+format = '([\[$ahead_behind\]$conflicted]($style) )'
 diverged = '⇡${ahead_count}⇣${behind_count}'
-behind = '⇣${count}'
+ahead =    '⇡${count}'
+behind =   '⇣${count}'
+conflicted = ' ${count}'
 
 [nodejs]
 format = '[$symbol($version )]($style) '
