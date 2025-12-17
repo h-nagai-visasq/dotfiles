@@ -45,3 +45,7 @@
 	ff = only
 [init]
 	defaultBranch = main
+[http]
+	sslVerify = false
+[credential]
+	helper = store

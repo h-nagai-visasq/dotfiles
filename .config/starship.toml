@@ -31,7 +31,7 @@ style = 'fg:8'
 [username]
 format = '[󰀉 $user]($style) '
 #show_always = true
-style = 'bright-green'
+#style = 'bright-green'
 
 [hostname]
 ssh_only = false
