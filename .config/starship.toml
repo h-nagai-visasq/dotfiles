@@ -30,8 +30,7 @@ style = 'fg:8'
 
 [username]
 format = '[󰀉 $user]($style) '
-#show_always = true
-#style = 'bright-green'
+show_always = true
 
 [hostname]
 ssh_only = false
@@ -52,7 +51,7 @@ format = '[󱂵 $path]($style)[$read_only]($read_only_style) '
 
 [cmd_duration]
 min_time = 500
-format = '[ $duration]($style) '
+format = '[ $duration]($style)'
 style = 'fg:8'
 
 [git_branch]
@@ -70,16 +69,16 @@ behind =   '⇣${count}'
 conflicted = ' ${count}'
 
 [nodejs]
-format = '[$symbol($version )]($style) '
-symbol = ' '
+format = '[$symbol($version )]($style)'
+symbol = '  '
 #style = 'fg:172'
 
 [python]
-format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style) '
-symbol = ' '
+format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+symbol = '  '
 #style = 'fg:172'
 
 [lua]
-format = '[$symbol($version )]($style) '
-symbol = ' '
+format = '[$symbol($version )]($style)'
+symbol = '  '
 #style = 'fg:172'
