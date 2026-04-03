@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+log() {
+  printf '[install-lazy-nvim] %s\n' "$1"
+}
+
+target="$HOME/.local/share/nvim/lazy/lazy.nvim"
+repo_url="https://github.com/folke/lazy.nvim.git"
+
+if [ -d "$target" ]; then
+  log "lazy.nvim already installed: $target"
+  exit 0
+fi
+
+log "creating parent directory: ${target%/lazy.nvim}"
+mkdir -p "${target%/lazy.nvim}"
+
+log "cloning lazy.nvim into $target"
+git clone "$repo_url" "$target"
+log "done"
