@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+log() {
+  printf '[install-tpm] %s\n' "$1"
+}
+
+target="$HOME/.config/tmux/plugins/tpm"
+repo_url="https://github.com/tmux-plugins/tpm"
+
+if [ -d "$target" ]; then
+  log "tpm already installed: $target"
+  exit 0
+fi
+
+log "creating parent directory: ${target%/tpm}"
+mkdir -p "${target%/tpm}"
+
+log "cloning tpm into $target"
+git clone "$repo_url" "$target"
+log "done"
