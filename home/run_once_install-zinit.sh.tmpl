@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+log() {
+  printf '[install-zinit] %s\n' "$1"
+}
+
+target="$HOME/.zinit/bin"
+repo_url="https://github.com/zdharma-continuum/zinit.git"
+
+if [ -d "$target" ]; then
+  log "zinit already installed: $target"
+  exit 0
+fi
+
+log "creating parent directory: ${target%/bin}"
+mkdir -p "${target%/bin}"
+
+log "cloning zinit into $target"
+git clone "$repo_url" "$target"
+log "done"
