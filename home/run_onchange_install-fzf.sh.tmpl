@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+log() {
+  printf '[install-fzf] %s\n' "$1"
+}
+
+if ! command -v brew >/dev/null 2>&1; then
+  log "brew not found; skipping"
+  exit 0
+fi
+
+install_script="$(brew --prefix)/opt/fzf/install"
+if [ ! -x "$install_script" ]; then
+  log "fzf install script not found; skipping"
+  exit 0
+fi
+
+log "running fzf installer"
+"$install_script" --key-bindings --completion --no-bash --no-fish --no-update-rc
+log "done"
