@@ -1,0 +1,18 @@
+# Common CLI tools and runtimes used across macOS and Linux hosts.
+tap "homebrew/bundle"
+
+brew "gh"
+brew "ripgrep"
+brew "fd"
+brew "fzf"
+brew "coreutils"
+brew "tmux"
+brew "node"
+brew "tree-sitter"
+brew "tree-sitter-cli"
+brew "luajit"
+brew "luarocks"
+brew "lua-language-server"
+brew "neovim"
+brew "starship"
+brew "mise"

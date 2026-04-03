@@ -78,7 +78,6 @@ export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
 export GRADLE_USER_HOME="$XDG_CACHE_HOME"/gradle
 export PSQL_HISTORY="$XDG_DATA_HOME"/psql/history
 export MYSQL_HISTFILE="$XDG_DATA_HOME"/mysql/history
-export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
 export MBOX="$XDG_DATA_HOME"/mail/mbox
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME"/pass
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg
