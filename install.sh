@@ -74,13 +74,16 @@ ensure_brew() {
 main() {
   ensure_brew
 
+  local brew_prefix
+  brew_prefix="$(brew --prefix)"
+
   if ! command -v chezmoi >/dev/null 2>&1; then
     log "chezmoi を brew でインストールします"
     brew install chezmoi
   fi
 
-  log "chezmoi init --apply hidetoshing を実行します"
-  chezmoi init --apply hidetoshing
+  log "chezmoi init --apply hidetoshing (${brew_prefix}/bin/chezmoi) を実行します"
+  "${brew_prefix}/bin/chezmoi" init --apply hidetoshing
 }
 
 main "$@"

@@ -1,0 +1,57 @@
+{{- $brewfile := printf "%s/Brewfile" .chezmoi.sourceDir -}}
+{{- $brewfile_darwin := printf "%s/Brewfile.darwin" .chezmoi.sourceDir -}}
+{{- $mise_config := printf "%s/mise.toml" .chezmoi.sourceDir -}}
+{{- $is_darwin := eq .chezmoi.os "darwin" -}}
+#!/usr/bin/env bash
+set -euo pipefail
+
+log() {
+  printf '[chezmoi-packages] %s\n' "$*"
+}
+
+ensure_brew_in_path() {
+  if command -v brew >/dev/null 2>&1; then
+    return 0
+  fi
+
+  for candidate in /opt/homebrew/bin/brew /usr/local/bin/brew /home/linuxbrew/.linuxbrew/bin/brew; do
+    if [ -x "$candidate" ]; then
+      eval "$($candidate shellenv)"
+      return 0
+    fi
+  done
+
+  return 1
+}
+
+run_brew_bundle() {
+  local file=$1
+  if [ ! -f "$file" ]; then
+    return 0
+  fi
+  log "brew bundle --file=${file}"
+  brew bundle --file="$file"
+}
+
+main() {
+  if ! ensure_brew_in_path; then
+    log "brewが見つからないため処理をスキップします"
+    exit 0
+  fi
+
+  run_brew_bundle "{{ $brewfile }}"
+{{- if $is_darwin }}
+  run_brew_bundle "{{ $brewfile_darwin }}"
+{{- end }}
+
+  if [ "${CHEZMOI_SKIP_MISE_INSTALL:-0}" = "1" ]; then
+    log "環境変数CHEZMOI_SKIP_MISE_INSTALL=1のため mise install をスキップします"
+  elif command -v mise >/dev/null 2>&1; then
+    log "mise install (config={{ $mise_config }})"
+    MISE_CONFIG_FILE="{{ $mise_config }}" mise install
+  else
+    log "miseが未インストールのためスキップします"
+  fi
+}
+
+main "$@"
