@@ -79,8 +79,13 @@ main() {
     brew install chezmoi
   fi
 
-  log "chezmoi init --apply hidetoshing を実行します"
-  chezmoi init --apply hidetoshing
+  if [ -d "${HOME}/.local/share/chezmoi" ]; then
+    log "既存の chezmoi リポジトリを update --apply します"
+    chezmoi update --apply
+  else
+    log "chezmoi init --apply hidetoshing を実行します"
+    chezmoi init --apply hidetoshing
+  fi
 }
 
 main "$@"
