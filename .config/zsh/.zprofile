@@ -10,5 +10,6 @@ path=(
     $(brew --prefix)/opt/mysql-client/bin(N-/)
     $(brew --prefix coreutils)/libexec/gnubin(N-/)
     /usr/local/bin(N-/)
+    /Applications/Obsidian.app/Contents/MacOS(N-/)
     $path
 )
