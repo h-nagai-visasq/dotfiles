@@ -1,0 +1,12 @@
+
+# Add color to ls command
+alias ls="ls --color"
+alias ll="ls -lh"
+alias la="ls -a"
+alias lla="ls -lha"
+
+alias tree="exa -T"
+
+alias -g HOSTS='grep "^Host" ~/.ssh/config | cut -c6- | fzf --reverse --height=24 --select-1 --prompt="HOST > "'
+
+alias vim="nvim"
