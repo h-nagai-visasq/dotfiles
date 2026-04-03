@@ -1,0 +1,4 @@
+# macOS-specific GUI applications and tools.
+source "Brewfile"
+
+cask "wezterm"
