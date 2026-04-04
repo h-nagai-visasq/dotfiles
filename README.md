@@ -28,7 +28,8 @@ curl -fsSL https://raw.githubusercontent.com/hidetoshing/dotfiles/master/install
 | `Brewfile` | macOS / Linux 共通の CLI ツール (gh, ripgrep, mise など) |
 | `Brewfile.darwin` | macOS 専用の cask / GUI (wezterm 等) |
 | `mise.toml` | `node = "lts"`, `python = "3.11"` などランタイム定義 |
-| `.chezmoi.toml.tmpl` | chezmoi の sourceDir を `home/` 配下に固定し、OS 判定フラグを提供 |
+| `.chezmoiroot` | `home/` を source ルートとして扱わせ、初回 `chezmoi apply` から全 dotfiles を適用 |
+| `home/.chezmoi.toml.tmpl` | OS 判定フラグ (`.data.is_darwin` など) を提供し、テンプレート側の条件分岐に活用 |
 | `home/` | 実際の dotfiles (`home/dot_config/...`) と run\_once/run\_onchange スクリプト |
 
 ## OS ごとの挙動

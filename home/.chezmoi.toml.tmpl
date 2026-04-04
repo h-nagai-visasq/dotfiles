@@ -1,6 +1,5 @@
 {{- $is_darwin := eq .chezmoi.os "darwin" -}}
 {{- $is_linux := eq .chezmoi.os "linux" -}}
-sourceDir = "{{ .chezmoi.sourceDir }}/home"
 
 [data]
   is_darwin = {{ $is_darwin }}
