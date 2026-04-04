@@ -1,4 +1,4 @@
 # macOS-specific GUI applications and tools.
-source "Brewfile"
+# source "Brewfile"
 
 cask "wezterm"
