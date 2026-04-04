@@ -1,0 +1,4 @@
+# Ignore wezterm config unless running on macOS
+{{ if not .data.is_darwin }}
+dot_config/wezterm/**
+{{ end }}
