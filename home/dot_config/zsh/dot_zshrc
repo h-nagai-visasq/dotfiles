@@ -1,5 +1,5 @@
 # homebrew setting (Normally this command is executed by .zprofile)
-eval "$(/opt/homebrew/bin/brew shellenv)"
+# eval "$(/opt/homebrew/bin/brew shellenv)"
 
 autoload -Uz zmv
 alias zmv='noglob zmv -W'
