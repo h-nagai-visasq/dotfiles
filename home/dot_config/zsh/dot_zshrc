@@ -55,7 +55,7 @@ if [[ -f "$HOME/.zshrc" ]]; then
 fi
 
 # zoxide setup
-eval "$(zoxide init zsh)"
+eval "$(zoxide init zsh --cmd j)"
 
 if [[ -d "$XDG_CONFIG_HOME"/zsh/plugins ]]; then
     for plugin_file in "$XDG_CONFIG_HOME"/zsh/plugins/*.zsh(N); do
