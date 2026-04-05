@@ -4,6 +4,7 @@
 local representative_servers = {
     "autotools_ls",
     "bashls",
+    "copilot",
     "docker_compose_language_service",
     "dockerls",
     "gopls",

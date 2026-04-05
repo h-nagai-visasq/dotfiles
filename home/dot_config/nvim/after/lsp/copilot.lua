@@ -1,5 +1,7 @@
 -- GitHub Copilotの設定
 
+local group = vim.api.nvim_create_augroup("copilot_inline_completion", {})
+
 return {
     root_dir = function(bufnr, callback)
         -- 特定の名前を持つファイルでは起動しないようにする
@@ -31,11 +33,20 @@ return {
 
         -- キーマップの設定 アタッチされたバッファでのみ有効にする
         vim.api.nvim_create_autocmd('LspAttach', {
-            group = vim.api.nvim_create_augroup('copilot_inline_completion', {}),
+            group = group,
             callback = function(args)
+                local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
+                if client.name ~= "copilot" then
+                    return
+                end
+
                 local bufnr = args.buf
 
                 -- インライン補完を有効に
+                if not client:supports_method(vim.lsp.protocol.Methods.textDocument_inlineCompletion, bufnr) then
+                    return
+                end
+
                 vim.lsp.inline_completion.enable(true, { bufnr = bufnr })
 
                 -- <C-y>で確定
@@ -59,4 +70,4 @@ return {
             end,
         })
     end,
-}---@type vim.lsp.Config
+}
