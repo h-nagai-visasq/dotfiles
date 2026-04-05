@@ -33,19 +33,24 @@ return {
             options = {
                 theme = "tokyonight-night",
             },
-            sections = {
-                lualine_c = {
-                    {
-                        'filename',
+	            sections = {
+	                lualine_c = {
+	                    {
+	                        'filename',
                         symbols = {
                             modified = ' ', -- Text to show when the file is modified.
                             readonly = '󰌾 ', -- Text to show when the file is non-modifiable or readonly.
                             unnamed = '󰢤 ',  -- Text to show for unnamed buffers.
                             newfile = ' ',  -- Text to show for newly created file before first write
                         }                    
-                    },
-                    'aerial'
-                },
+	                    },
+	                    {
+	                        require("config.helper_lualine").aerial_location,
+	                        cond = function()
+	                            return package.loaded["aerial"] ~= nil
+	                        end,
+	                    },
+	                },
                 lualine_x = {
                     'encoding',
                     'filetype',
@@ -82,4 +87,3 @@ return {
         opts = {},
     },
 }
-

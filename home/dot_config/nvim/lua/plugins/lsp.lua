@@ -18,7 +18,7 @@ return {
             { "mason-org/mason.nvim", },
             { "neovim/nvim-lspconfig", },
         },
-        event = { "BufReadPre", "BufNewFile" },
+        event = "VeryLazy",
         keys = {
             { "<C-space>", "<cmd>lua vim.lsp.completion.get()  <CR>", mode = "i" },
             { "gh",        "<cmd>lua vim.lsp.buf.hover()       <CR>" },
@@ -55,7 +55,7 @@ return {
         -- aerial.nvim plugin
         -- A code outline window for Neovim
         "https://github.com/stevearc/aerial.nvim",
-        event = { "BufReadPost", "BufWritePost", "BufNewFile" },
+        cmd = { "AerialOpen", "AerialClose", "AerialToggle", "AerialFocus", "AerialNavOpen", "AerialNavToggle", "AerialInfo" },
         keys = {
             { "<leader>wa", "<cmd>AerialOpen<cr>", desc = "toggle Aerial" },
             { "<leader>wf", "<cmd>AerialFocus<cr>",  desc = "focus Aerial" },

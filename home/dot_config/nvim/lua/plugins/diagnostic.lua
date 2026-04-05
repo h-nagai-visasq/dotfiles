@@ -6,6 +6,7 @@ return {
         -- tiny-inline-diagnostic.nvim plugin
         -- A minimal inline diagnostic plugin for Neovim
         "https://github.com/rachartier/tiny-inline-diagnostic.nvim",
+        event = "LspAttach",
         opts = {
             options = {
                 show_source = {

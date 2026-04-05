@@ -11,7 +11,7 @@ return {
             "https://github.com/MunifTanjim/nui.nvim",
             "https://github.com/nvim-tree/nvim-web-devicons", -- optional, but recommended
         },
-        lazy = false, -- neo-tree will lazily load itself
+        cmd = { "Neotree" },
         keys = {
             { "<leader>ee", "<cmd>Neotree source=filesystem reveal=true position=left<CR>", desc = "File Tree" },
             { "<leader>ef", "<cmd>Neotree float<CR>", desc = "Float File Tree" },

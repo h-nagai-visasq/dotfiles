@@ -29,4 +29,22 @@ M.buffer_label = function()
     return " buf:"
 end
 
+M.aerial_location = function()
+    if not package.loaded["aerial"] then
+        return ""
+    end
+
+    local ok, aerial = pcall(require, "aerial")
+    if not ok or type(aerial.get_location) ~= "function" then
+        return ""
+    end
+
+    local ok_location, location = pcall(aerial.get_location, true)
+    if not ok_location then
+        return ""
+    end
+
+    return location
+end
+
 return M
