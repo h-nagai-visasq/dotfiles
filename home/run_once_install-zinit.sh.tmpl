@@ -5,7 +5,8 @@ log() {
   printf '[install-zinit] %s\n' "$1"
 }
 
-target="$HOME/.zinit/bin"
+xdg_data_home="${XDG_DATA_HOME:-$HOME/.local/share}"
+target="$xdg_data_home/zinit/bin"
 repo_url="https://github.com/zdharma-continuum/zinit.git"
 
 if [ -d "$target" ]; then

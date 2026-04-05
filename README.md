@@ -46,7 +46,7 @@ curl -fsSL https://raw.githubusercontent.com/hidetoshing/dotfiles/master/install
 
 ## 各種設定 (home/dot_config/)
 
-- **zsh**: XDG ベースの `~/.config/zsh` に `.zshrc/.zprofile/.zshalias/.zinit` を展開。zinit による plugin 管理を run\_once スクリプトで自動化。
+- **zsh**: XDG ベースの `~/.config/zsh` に `.zshrc/.zprofile/.zshalias/.zinit` を展開。zinit は `$XDG_DATA_HOME/zinit` 配下へ run\_once スクリプトで自動クローンされる。
 - **tmux**: `~/.config/tmux/tmux.conf` を展開し、TPM を run\_once で自動クローン。leader は `<C-t>`。
 - **git**: `~/.config/git/config` と `ignore` を適用。エイリアスや `ghq.root` などを統合管理。
 - **starship**: `~/.config/starship.toml` を展開し、左側がリポジトリ、右側がランタイム／所要時間を表示。
