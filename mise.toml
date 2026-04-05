@@ -1,4 +1,4 @@
 # Runtime versions managed via mise.
 [tools]
 node = "lts"
-python = "3.11"
+python = "3.14"

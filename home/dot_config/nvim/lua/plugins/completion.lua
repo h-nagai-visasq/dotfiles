@@ -8,9 +8,11 @@ return {
     version = '*',
     dependencies = { 'https://github.com/rafamadriz/friendly-snippets' },
     event = { "InsertEnter", "CmdLineEnter" },
+    opts_extend = { "sources.default" },
 
     ---@module 'blink.cmp'
     opts = {
+        keymap = { preset = 'default' },
         -- enabled = function() return not vim.tbl_contains({ "markdown" }, vim.bo.filetype) end,
         completion = {
             documentation = {
@@ -24,6 +26,17 @@ return {
                 draw = {
                     treesitter = { 'lsp' },
                     columns = { { 'kind_icon' }, { 'label', 'label_description', gap = 1 }, { 'source_name' }, },
+                },
+            },
+        },
+        sources = {
+            default = { 'lsp', 'path', 'snippets', 'buffer' },
+            providers = {
+                snippets = {
+                    -- `.` や `>` 直後は LSP 補完を優先し、HTML/JS系で snippet 候補が暴れすぎないようにする
+                    should_show_items = function(ctx)
+                        return ctx.trigger.initial_kind ~= 'trigger_character'
+                    end,
                 },
             },
         },
