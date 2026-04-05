@@ -52,4 +52,5 @@ curl -fsSL https://raw.githubusercontent.com/hidetoshing/dotfiles/master/install
 - **starship**: `~/.config/starship.toml` を展開し、左側がリポジトリ、右側がランタイム／所要時間を表示。
 - **neovim**: `lazy.nvim` ベースの Lua 構成。`run_once_install-lazy-nvim.sh.tmpl` が lazy.nvim を所定のパスに展開し、`home/dot_config/nvim/**` を適用。
   `mason-lspconfig.nvim` で `python / lua / shell(zsh, bash) / html / JavaScript / React / Vue / Docker / Go / Rust / Markdown / Makefile / GitHub Copilot` 向けの代表的な LSP を初回起動時から自動導入します。
+  `conform.nvim` と `nvim-lint` で上記言語向けの Formatter / Linter も連携し、CLI ツールは Mason から自動導入します。
 - **fzf**: `run_onchange_install-fzf.sh.tmpl` が `$(brew --prefix)/opt/fzf/install` を叩き、zsh/tmux 用キーバインドと補完をセットアップ。
