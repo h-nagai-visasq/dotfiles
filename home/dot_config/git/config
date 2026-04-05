@@ -1,51 +1,177 @@
+# =========================
+# ~/.gitconfig (global)
+# =========================
+
 [alias]
-    d  = diff
-    # stageしてあるファイルのdiffを表示する(=これからコミットされるファイル)
-    dc = diff --cached
-	dw = diff --color-words
-	staged = diff --staged
-    co = checkout
+    # ---- 基本系 ----
+
+    # 作業ツリーの差分
+    d = diff
+
+    # stage済み(index)の差分
+    # --staged は --cached の同義語だが、意味が分かりやすいのでこちらに統一
+    dc = diff --staged
+    staged = diff --staged
+
+    # 単語単位で見やすく差分表示
+    dw = diff --color-words
+
+    # 状態確認
+    st = status
+
+    # 部分的に stage
+    p = add -p
+
+    # コミット
     ci = commit
     cmm = commit -m
+
+    # ブランチ一覧
     br = branch
-    p = add -p
-    st = status
-    save = stash save -u
-    web = "!gh repo view --web"
-    l = log --oneline --decorate --graph --branches --tags --remotes --all
-    # mergeコミットコメントはデフォルトのままで($EDITORを開かない)
-    merge = merge --no-edit
-    # mergeコミットはそのままでrebaseする
-    rb = rebase --preserve-merge
-    unstage = reset HEAD --
+
+    # ---- checkout 系の役割分割 ----
+
+    # 旧来の癖用として checkout は残す
+    co = checkout
+
+    # ブランチ切り替え・作成は switch を使う
+    sw = switch
+
+    # ファイル内容の復元は restore を使う
+    rs = restore
+
+    # stage の取り消し
+    # reset HEAD -- よりも意図が明確
+    unstage = restore --staged --
+
+    # 直前コミットだけ取り消して、変更は stage したまま残す
     uncommit = reset --soft HEAD^
-    # rebaseでpullする、ついでに不要なリモートブランチを削除する
-    up = pull --rebase --prune
-    # master以外のマージ済みブランチを削除する
-    bclean = "!f() { git branch --merged master | grep -v " master$" | xargs -I % git branch -d %;}; f"
-    # git start <branch-name> <work-summary> masterを最新にした上で新規作業ブランチ作って空コミットする
-    start = "!f() { [ -z \"${1+x}\" ] && { echo 'Please specify branch name.'; exit 1;}; [ -z \"${2+x}\" ] && { echo 'Please specify your work summary.'; exit 1;}; git checkout master && git up && git checkout -b $1 && git commit --allow-empty -m \":octocat: ${2} 作業開始\" && git push -u origin $1; }; f"
-    # masterに移動して、最新に更新 + 不要ブランチを削除
-    done = "!f() { git checkout master && git up && git bclean; }; f"
-    # これを叩くと`git co pr/{pullreq-number}`でPRをチェックアウトできるようになる
-    pr-setup = config --add remote.origin.fetch +refs/pull/*/head:refs/remotes/origin/pr/*s
-    aliases = !git config --get-regexp alias |  sed 's/^alias.//g' | sed 's/ / = /1'
+
+    # ---- stash / merge / rebase ----
+
+    # untracked も含めて stash
+    # stash save は古い流儀なので push に更新
+    save = stash push -u
+
+    # merge commit を保持しながら rebase
+    # --preserve-merges の代わりに --rebase-merges を使う
+    rb = rebase --rebase-merges
+
+    # ---- 参照系 ----
+
+    # 全 refs を含めた見やすいログ
+    l = log --oneline --decorate --graph --branches --tags --remotes --all
+
+    # GitHub リポジトリをブラウザで開く
+    web = "!gh repo view --web"
+
+    # alias 一覧表示
+    aliases = !git config --get-regexp '^alias\\.' | sed 's/^alias\\.//'
+
+    # ---- ブランチ運用補助 ----
+
+    # origin のデフォルトブランチを返す
+    # 取得できなければ main を使う
+    default-branch = "!f() { git symbolic-ref --quiet --short refs/remotes/origin/HEAD 2>/dev/null | sed 's@^origin/@@' || echo main; }; f"
+
+    # default branch 以外の、マージ済みローカルブランチを削除
+    bclean = "!f() { base=$(git default-branch); git branch --merged \"$base\" | grep -vE \"^[* ]*(${base})$\" | sed 's/^..//' | xargs -r git branch -d; }; f"
+
+    # git start <branch-name> <work-summary>
+    # default branch を最新化して作業ブランチを切り、空コミットして push
+    start = "!f() { \
+        [ -z \"${1+x}\" ] && { echo 'Please specify branch name.'; exit 1; }; \
+        [ -z \"${2+x}\" ] && { echo 'Please specify your work summary.'; exit 1; }; \
+        base=$(git default-branch); \
+        git switch \"$base\" && \
+        git pull && \
+        git switch -c \"$1\" && \
+        git commit --allow-empty -m \":octocat: ${2} 作業開始\" && \
+        git push -u origin \"$1\"; \
+    }; f"
+
+    # default branch に戻って最新化し、不要ブランチを削除
+    done = "!f() { \
+        base=$(git default-branch); \
+        git switch \"$base\" && \
+        git pull && \
+        git bclean; \
+    }; f"
+
+    # PR checkout 用 fetch ref を追加
+    # 注意: refs/remotes/origin/pr/* に展開する
+    pr-setup = config --add remote.origin.fetch +refs/pull/*/head:refs/remotes/origin/pr/*
+
+
 [color]
-    ui = true
+    # color は auto で十分
+    ui = auto
+
+
 [core]
-	editor = vim
+    editor = vim
+
+    # global ignore
     excludesfile = ~/.config/git/ignore
+
+
 [ghq]
+    # ghq root は複数定義可能
     root = ~/projects
     root = ~/src
-[user]
-	name = hidetoshing
-	email = hidetoshing@gmail.com
-[pull]
-	ff = only
+
+
 [init]
-	defaultBranch = main
+    # 新規 repo の既定ブランチ名
+    defaultBranch = main
+
+
+[fetch]
+    # fetch 時に消えた remote-tracking branch を自動掃除
+    prune = true
+
+
+[pull]
+    # pull 時は rebase ベースで運用
+    # merge commit を含む場合も構造を保つ
+    rebase = merges
+
+    # 作業ツリーに変更があっても pull/rebase しやすくする
+    autoStash = true
+
+
+[push]
+    # 初回 push 時に upstream を自動設定
+    autoSetupRemote = true
+
+    # 安全寄りの既定動作
+    default = simple
+
+
+[rebase]
+    # rebase 時に関連するローカル参照も追随更新
+    updateRefs = true
+
+
+[rerere]
+    # 同じ conflict 解消を学習・再利用
+    enabled = true
+
+
+[merge]
+    # conflict marker に共通祖先も含めて見やすくする
+    conflictStyle = zdiff3
+
+
+[user]
+    name = hidetoshing
+    email = hidetoshing@gmail.com
+
+
 [http]
 	sslVerify = false
+
+
 [credential]
-	helper = store
+    helper = osxkeychain
+    helper = store
