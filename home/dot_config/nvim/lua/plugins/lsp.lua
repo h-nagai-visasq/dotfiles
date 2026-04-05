@@ -1,6 +1,20 @@
 -- lsp.lua
 -- Specify your LSP plugin here
 
+local representative_servers = {
+    "bashls",
+    "docker_compose_language_service",
+    "dockerls",
+    "gopls",
+    "html",
+    "lua_ls",
+    "marksman",
+    "pyright",
+    "rust_analyzer",
+    "vtsls",
+    "vue_ls",
+}
+
 return {
     {
         -- mason.nvim plugin
@@ -19,13 +33,26 @@ return {
             { "neovim/nvim-lspconfig", },
         },
         event = "VeryLazy",
+        opts = {
+            ensure_installed = representative_servers,
+            automatic_enable = representative_servers,
+        },
         keys = {
             { "<C-space>", "<cmd>lua vim.lsp.completion.get()  <CR>", mode = "i" },
             { "gh",        "<cmd>lua vim.lsp.buf.hover()       <CR>" },
             { "gd",        "<cmd>lua vim.lsp.buf.definition()  <CR>" },
             { "gD",        "<cmd>lua vim.lsp.buf.declaration() <CR>" },
         },
-        config = true,
+        config = function(_, opts)
+            local ok, blink = pcall(require, "blink.cmp")
+            if ok then
+                vim.lsp.config("*", {
+                    capabilities = blink.get_lsp_capabilities(),
+                })
+            end
+
+            require("mason-lspconfig").setup(opts)
+        end,
     },
     {
         -- nvim-lsp-notify plugin

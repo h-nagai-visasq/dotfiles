@@ -50,5 +50,5 @@ curl -fsSL https://raw.githubusercontent.com/hidetoshing/dotfiles/master/install
 - **tmux**: `~/.config/tmux/tmux.conf` を展開し、TPM を run\_once で自動クローン。leader は `<C-t>`。
 - **git**: `~/.config/git/config` と `ignore` を適用。エイリアスや `ghq.root` などを統合管理。
 - **starship**: `~/.config/starship.toml` を展開し、左側がリポジトリ、右側がランタイム／所要時間を表示。
-- **neovim**: `lazy.nvim` ベースの Lua 構成。`run_once_install-lazy-nvim.sh.tmpl` が lazy.nvim を所定のパスに展開し、`home/dot_config/nvim/**` を適用。
+- **neovim**: `lazy.nvim` ベースの Lua 構成。`run_once_install-lazy-nvim.sh.tmpl` が lazy.nvim を所定のパスに展開し、`home/dot_config/nvim/**` を適用。`mason-lspconfig.nvim` で `python / lua / shell(zsh, bash) / html / JavaScript / React / Vue / Docker / Go / Rust / Markdown` 向けの代表的な LSP を初回起動時から自動導入します。
 - **fzf**: `run_onchange_install-fzf.sh.tmpl` が `$(brew --prefix)/opt/fzf/install` を叩き、zsh/tmux 用キーバインドと補完をセットアップ。

@@ -51,5 +51,14 @@ require("config.util").setup()
 
 require("config.gui").setup()
 
+-- Docker Compose 用 LSP が付けられるよう、Compose ファイルだけ専用 filetype に寄せる
+vim.filetype.add({
+    filename = {
+        ["docker-compose.yml"] = "yaml.docker-compose",
+        ["docker-compose.yaml"] = "yaml.docker-compose",
+        ["compose.yml"] = "yaml.docker-compose",
+        ["compose.yaml"] = "yaml.docker-compose",
+    },
+})
 
 -- require("config.language_support").setup()  -- LSP settings
