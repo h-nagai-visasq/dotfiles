@@ -38,7 +38,8 @@ require("lazy").setup({
         { import = "plugins.filetree" },
 
         -- editing
-        { import = "plugins.obsidian" },
+        -- { import = "plugins.obsidian" },
+
         -- tools
         { import = "plugins.tools" },
     },

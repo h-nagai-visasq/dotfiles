@@ -29,7 +29,6 @@ vim.g.loaded_perl_provider = 0
 vim.g.loaded_ruby_provider = 0
 
 -- python path. requierd pyenv global python version.
--- Mason required < 3.14. 3.13.9 used.
 vim.g.python3_host_prog = vim.env.HOME .. '/shims/python'
 
 -- Load general settings
