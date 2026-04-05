@@ -23,7 +23,7 @@ return {
         -- hlchunk.nvim plugin
         -- Highlight code chunks based on indentation
         "https://github.com/shellRaining/hlchunk.nvim",
-        event = { "BufReadPre", "BufNewFile" },
+        event = "VeryLazy",
         opts = {
             chunk = {
                 enable = true,

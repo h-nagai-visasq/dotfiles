@@ -6,7 +6,7 @@ return {
         -- gitsigns.nvim plugin
         -- Git integration for buffers in Neovim
         "https://github.com/lewis6991/gitsigns.nvim",
-        event = { "BufReadPre", "BufNewFile" },
+        event = "VeryLazy",
         opts = {},
     },
     {

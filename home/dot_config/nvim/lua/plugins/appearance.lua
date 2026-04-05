@@ -6,6 +6,8 @@ return {
         -- nvim-notify plugin
         -- A fancy notification manager for Neovim
         "https://github.com/rcarriga/nvim-notify",
+        event = "VeryLazy",
+        opts = {},
         config = function(_, opts)
             local notify = require("notify")
             notify.setup(opts)
@@ -29,6 +31,7 @@ return {
         -- lualine.nvim plugin
         -- A blazing fast and easy to configure Neovim statusline
         "https://github.com/nvim-lualine/lualine.nvim",
+        event = "VeryLazy",
         opts = {
             options = {
                 theme = "tokyonight-night",
