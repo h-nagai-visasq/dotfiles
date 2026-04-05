@@ -76,17 +76,7 @@ if command -v brew >/dev/null 2>&1; then
     )
 fi
 
-# Language toolchains
-if [[ -s "$CARGO_HOME/env" ]]; then
-    source "$CARGO_HOME/env"
-fi
-
 # pyenv setup for login shells (init done interactively)
 if command -v pyenv >/dev/null 2>&1; then
     eval "$(pyenv init --path)"
-fi
-
-# bundler bin path ensures executables available early
-if [[ -d "$BUNDLE_BIN" ]]; then
-    path=("$BUNDLE_BIN" $path)
 fi
