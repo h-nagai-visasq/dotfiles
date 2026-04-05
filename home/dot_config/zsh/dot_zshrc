@@ -57,6 +57,9 @@ fi
 # zoxide setup
 eval "$(zoxide init zsh --cmd j)"
 
+# mise setup
+eval "$(mise activate bash)"
+
 if [[ -d "$XDG_CONFIG_HOME"/zsh/plugins ]]; then
     for plugin_file in "$XDG_CONFIG_HOME"/zsh/plugins/*.zsh(N); do
         source "$plugin_file"
