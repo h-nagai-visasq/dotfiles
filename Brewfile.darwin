@@ -1,4 +1,8 @@
-# macOS-specific GUI applications and tools.
-# source "Brewfile"
-
+# --- Terminal ---
 cask "wezterm"
+
+# --- Docker runtime ---
+cask "docker-desktop"
+
+# --- Font ---
+cask "font-moralerspace"

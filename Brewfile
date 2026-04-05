@@ -1,9 +1,37 @@
-# Common CLI tools and runtimes used across macOS and Linux hosts.
-
+# --- VCS ---
+brew "git"
 brew "gh"
-brew "ripgrep"
+brew "ghq"
+
+# --- CLI UX ---
+brew "bat"
 brew "fd"
-brew "tmux"
+brew "fzf"
+brew "ripgrep"
+brew "zoxide"
+
+# --- 基本ユーティリティ ---
+brew "coreutils"
+brew "gnu-tar"
+brew "gpatch"
+brew "wget"
+
+# --- dotfiles ---
+brew "chezmoi"
+
+# --- Editor / Shell ---
 brew "neovim"
+brew "tmux"
 brew "starship"
-brew "mise"
+
+# --- Git / Docker TUI ---
+brew "lazygit"
+brew "lazydocker"
+
+# --- Docker CLI ---
+brew "docker"
+brew "docker-compose"
+brew "docker-buildx"
+
+# --- Task runner（移行期間用）---
+brew "make"
