@@ -2,6 +2,7 @@
 -- Specify your LSP plugin here
 
 local representative_servers = {
+    "autotools_ls",
     "bashls",
     "docker_compose_language_service",
     "dockerls",
