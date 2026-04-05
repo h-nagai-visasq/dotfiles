@@ -10,3 +10,5 @@ alias tree="eza -T"
 alias -g HOSTS='grep "^Host" ~/.ssh/config | cut -c6- | fzf --reverse --height=24 --select-1 --prompt="HOST > "'
 
 alias vim="nvim"
+
+alias dots="chezmoi"

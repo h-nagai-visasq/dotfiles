@@ -30,6 +30,5 @@ autoload -Uz _zinit
 #     zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 # fi
 
-
 zinit light "hidetoshing/zsh-git-commands"
 zinit light "hidetoshing/zsh-cd-util"

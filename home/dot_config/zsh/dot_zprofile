@@ -10,40 +10,39 @@ elif command -v brew >/dev/null 2>&1; then
 fi
 
 # Tool-specific environment variables (XDG-aware)
-export TERMINFO="$XDG_DATA_HOME"/terminfo
-export TERMINFO_DIRS="$XDG_DATA_HOME"/terminfo:/usr/share/terminfo
+
+## ripgrep
 export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME"/rg/config
+
+## pyenv configuration
+export PYENV_ROOT=${PYENV_ROOT:-"$XDG_DATA_HOME"/pyenv}
+
+export NODE_PATH="$XDG_DATA_HOME"/node/lib
+export NODE_REPL_HISTORY="$XDG_DATA_HOME"/node/repl_history
+
+## Node.js configuration
+export NO_UPDATE_NOTIFIER=1
+export NVM_DIR="$XDG_DATA_HOME"/nvm
+
+## npm configuration
 export npm_config_userconfig="$XDG_CONFIG_HOME"/npm/config
 export npm_config_cache="$XDG_CACHE_HOME"/npm
 export npm_config_prefix="$XDG_DATA_HOME"/npm
 export npm_config_init_module="$XDG_DATA_HOME"/npm/config/npm-init.js
-export NO_UPDATE_NOTIFIER=1
-export NVM_DIR="$XDG_DATA_HOME"/nvm
-export NODE_REPL_HISTORY="$XDG_DATA_HOME"/node/repl_history
-export BUNDLE_USER_CONFIG="$XDG_CONFIG_HOME"/bundle
-export BUNDLE_USER_CACHE="$XDG_CACHE_HOME"/bundle
-export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME"/bundle
-export PUB_CACHE="$XDG_CACHE_HOME"/pub-cache
-export GEM_HOME="$XDG_DATA_HOME"/gem
-export GEM_SPEC_CACHE="$XDG_CACHE_HOME"/gem/specs
-export CP_HOME_DIR="$XDG_CACHE_HOME"/cocoapods
-export CARGO_HOME="$XDG_DATA_HOME"/cargo
+
+export NPM_CONFIG_PREFIX="$npm_config_prefix"
+
+## Rust configuration
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
-export GRADLE_USER_HOME="$XDG_CACHE_HOME"/gradle
-export BUNDLE_BIN="$XDG_DATA_HOME"/bundle/bin
-export PSQL_HISTORY="$XDG_DATA_HOME"/psql/history
+export CARGO_HOME="$XDG_DATA_HOME"/cargo
+
+## MySQL, PostgreSQL, SQLite, MongoDB configuration
 export MYSQL_HISTFILE="$XDG_DATA_HOME"/mysql/history
 export SQLITE_HISTORY="$XDG_DATA_HOME"/sqlite/history
+export PSQL_HISTORY="$XDG_DATA_HOME"/psql/history
 export PGCLIRC="$XDG_CONFIG_HOME"/pgcli/config
 export MONGO_HISTFILE="$XDG_DATA_HOME"/mongo/history
-export PASSWORD_STORE_DIR="$XDG_DATA_HOME"/pass
-export VAGRANT_HOME="$XDG_DATA_HOME"/vagrant
-export VAGRANT_ALIAS_FILE="$XDG_DATA_HOME"/vagrant/aliases
 
-# Language-specific roots
-export PYENV_ROOT=${PYENV_ROOT:-"$XDG_DATA_HOME"/pyenv}
-export NPM_CONFIG_PREFIX="$npm_config_prefix"
-export NODE_PATH="$XDG_DATA_HOME"/node/lib
 
 # PATH consolidation
 typeset -aU path manpath
