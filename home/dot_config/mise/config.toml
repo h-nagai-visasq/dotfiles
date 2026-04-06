@@ -1,3 +1,2 @@
-[env]
-# 既存の .venv を見つけたときだけ自動有効化して、不要な仮想環境の自動生成は避ける。
-_.python.venv = ".venv"
+[task.init]
+touch mise.toml
