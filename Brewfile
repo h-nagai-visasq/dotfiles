@@ -5,6 +5,7 @@ brew "ghq"
 
 # --- CLI UX ---
 brew "bat"
+brew "eza"
 brew "fd"
 brew "fzf"
 brew "ripgrep"
