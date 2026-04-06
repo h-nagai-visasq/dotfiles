@@ -18,8 +18,8 @@ end
 
 M.setup_movekeys = function()
     -- move option mappings
-    vim.keymap.set('n', 'g.', '`.', {silent = true, desc = "goto last change"})
-    vim.keymap.set('n', 'g0', '`.0', {silent = true, desc = "goto beginning of last change"})
+    vim.keymap.set('n', '[.', '`.', {silent = true, desc = "goto last change"})
+    vim.keymap.set('n', '[0', '`.0', {silent = true, desc = "goto beginning of last change"})
     vim.keymap.set('n', '<leader>m', ':marks<CR>', {silent = true, desc = "list all marks"})
 end
 
