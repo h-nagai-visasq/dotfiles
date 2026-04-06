@@ -1,0 +1,12 @@
+WRN 2026-04-07T00:54:44.369 ?.31298    server_start:197: Failed to start server: operation not permitted: /var/folders/vt/1px5nk2s4mz610tp5m73q1700000gn/T/nvim.hidetoshing/KlZmbU/nvim.31298.0
+WRN 2026-04-07T00:54:44.385 ?.31299    server_start:197: Failed to start server: operation not permitted: /var/folders/vt/1px5nk2s4mz610tp5m73q1700000gn/T/nvim.hidetoshing/IcB3Fu/nvim.31299.0
+WRN 2026-04-07T00:54:44.398 ?.31302    server_start:197: Failed to start server: operation not permitted: /var/folders/vt/1px5nk2s4mz610tp5m73q1700000gn/T/nvim.hidetoshing/hu5cPB/nvim.31302.0
+WRN 2026-04-07T00:55:08.735 ?.31487    server_start:197: Failed to start server: operation not permitted: /var/folders/vt/1px5nk2s4mz610tp5m73q1700000gn/T/nvim.hidetoshing/8g86YZ/nvim.31487.0
+WRN 2026-04-07T00:55:08.757 ?.31488    server_start:197: Failed to start server: operation not permitted: /var/folders/vt/1px5nk2s4mz610tp5m73q1700000gn/T/nvim.hidetoshing/sny1u5/nvim.31488.0
+WRN 2026-04-07T00:55:08.757 ?.31489    server_start:197: Failed to start server: operation not permitted: /var/folders/vt/1px5nk2s4mz610tp5m73q1700000gn/T/nvim.hidetoshing/Makdyv/nvim.31489.0
+WRN 2026-04-07T00:55:23.783 ?.31603    server_start:197: Failed to start server: operation not permitted: /var/folders/vt/1px5nk2s4mz610tp5m73q1700000gn/T/nvim.hidetoshing/b9AcED/nvim.31603.0
+WRN 2026-04-07T00:55:23.799 ?.31604    server_start:197: Failed to start server: operation not permitted: /var/folders/vt/1px5nk2s4mz610tp5m73q1700000gn/T/nvim.hidetoshing/HvcHVj/nvim.31604.0
+WRN 2026-04-07T00:55:23.816 ?.31607    server_start:197: Failed to start server: operation not permitted: /var/folders/vt/1px5nk2s4mz610tp5m73q1700000gn/T/nvim.hidetoshing/ZvV8oQ/nvim.31607.0
+WRN 2026-04-07T00:56:08.539 ?.31865    server_start:197: Failed to start server: operation not permitted: /var/folders/vt/1px5nk2s4mz610tp5m73q1700000gn/T/nvim.hidetoshing/nHB1Di/nvim.31865.0
+WRN 2026-04-07T00:56:08.557 ?.31867    server_start:197: Failed to start server: operation not permitted: /var/folders/vt/1px5nk2s4mz610tp5m73q1700000gn/T/nvim.hidetoshing/4OOMur/nvim.31867.0
+WRN 2026-04-07T00:56:08.557 ?.31866    server_start:197: Failed to start server: operation not permitted: /var/folders/vt/1px5nk2s4mz610tp5m73q1700000gn/T/nvim.hidetoshing/SqHDFI/nvim.31866.0
