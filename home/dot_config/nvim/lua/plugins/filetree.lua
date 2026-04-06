@@ -25,7 +25,7 @@ return {
                 filtered_items = {
                     visible = true, -- This will show hidden files
                     hide_dotfiles = false,
-                    hide_gitignored = false,
+                    hide_gitignored = true,
                 },
                 follow_current_file = {
                     enabled = true,
