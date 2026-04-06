@@ -32,7 +32,7 @@ M.setup_get_path = function()
                 return
             end
 
-            vim.fn.setreg('"', path)
+            vim.fn.setreg('+', path)
             vim.notify('Yanked: ' .. path, vim.log.levels.INFO, { title = 'GetPath' })
         end,
         {
