@@ -60,4 +60,3 @@ vim.filetype.add({
     },
 })
 
--- require("config.language_support").setup()  -- LSP settings
