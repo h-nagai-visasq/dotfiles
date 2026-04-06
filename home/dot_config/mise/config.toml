@@ -1,2 +1,3 @@
-[task.init]
-touch mise.toml
+[tasks.init]
+description = "miseの設定ファイルを追加します"
+run = "touch mise.toml"
