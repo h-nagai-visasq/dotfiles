@@ -1,0 +1,3 @@
+# Use a local selene standard library so Neovim's global `vim` API is recognized
+# even when the bundled `vim` stdlib is unavailable.
+std = "nvim"
