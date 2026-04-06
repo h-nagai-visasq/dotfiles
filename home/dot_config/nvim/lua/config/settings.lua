@@ -1,6 +1,6 @@
 -- General Neovim settings
 
-local opt = vim.opt    -- to set options
+local opt = vim.opt -- to set options
 
 opt.encoding = "utf-8" -- Set default encoding to UTF-8
 
@@ -17,7 +17,6 @@ opt.backup = false
 opt.swapfile = false
 
 -- opt.autochdir=true
-
 opt.number = true -- Show line numbers
 opt.signcolumn = "yes"
 

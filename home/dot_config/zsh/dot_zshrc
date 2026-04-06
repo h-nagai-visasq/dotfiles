@@ -37,11 +37,6 @@ fi
 # starship prompt
 eval "$(starship init zsh)"
 
-# pyenv (interactive)
-if command -v pyenv >/dev/null 2>&1; then
-    eval "$(pyenv init -)"
-fi
-
 # load aliases
 source "$XDG_CONFIG_HOME"/zsh/.zshalias
 
@@ -58,7 +53,9 @@ fi
 eval "$(zoxide init zsh --cmd j)"
 
 # mise setup
-eval "$(mise activate bash)"
+if command -v mise >/dev/null 2>&1; then
+    eval "$(mise activate zsh)"
+fi
 
 if [[ -d "$XDG_CONFIG_HOME"/zsh/plugins ]]; then
     for plugin_file in "$XDG_CONFIG_HOME"/zsh/plugins/*.zsh(N); do

@@ -40,9 +40,11 @@ curl -fsSL https://raw.githubusercontent.com/hidetoshing/dotfiles/master/install
 
 ## mise ランタイム管理
 
-- `mise.toml` に `node = "lts"`, `python = "3.11"` を定義
+- `mise.toml` に `node = "lts"`, `python = "latest"` を定義
 - chezmoi の run_onchange スクリプトが `mise install` を実行（`CHEZMOI_SKIP_MISE_INSTALL=1` で一時スキップ可能）
 - ランタイムのバージョン固定や追加は `mise.toml` を編集し `chezmoi apply` を再実行するだけ
+- `~/.config/mise/config.toml` で既存 `.venv` を自動有効化し、`pyenv` の init には依存しない運用に統一
+- `pyenv` 依存プロジェクト向けに `source ~/.config/shell/pyenv.sh` を用意し、必要なセッションだけ `pyenv` / `pyenv-virtualenv` を有効化できる
 
 ## 各種設定 (home/dot_config/)
 

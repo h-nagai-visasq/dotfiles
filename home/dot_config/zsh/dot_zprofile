@@ -14,9 +14,6 @@ fi
 ## ripgrep
 export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME"/rg/config
 
-## pyenv configuration
-export PYENV_ROOT=${PYENV_ROOT:-"$XDG_DATA_HOME"/pyenv}
-
 export NODE_PATH="$XDG_DATA_HOME"/node/lib
 export NODE_REPL_HISTORY="$XDG_DATA_HOME"/node/repl_history
 
@@ -47,7 +44,6 @@ export MONGO_HISTFILE="$XDG_DATA_HOME"/mongo/history
 # PATH consolidation
 typeset -aU path manpath
 path=(
-    "$PYENV_ROOT"/bin(N-/)
     "$HOME"/.local/bin(N-/)
     "$HOME"/bin(N-/)
     "$XDG_DATA_HOME"/npm/bin(N-/)
@@ -74,9 +70,4 @@ if command -v brew >/dev/null 2>&1; then
         "$brew_prefix"/opt/coreutils/libexec/gnuman(N-/)
         $manpath
     )
-fi
-
-# pyenv setup for login shells (init done interactively)
-if command -v pyenv >/dev/null 2>&1; then
-    eval "$(pyenv init --path)"
 fi

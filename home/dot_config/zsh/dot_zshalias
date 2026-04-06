@@ -12,3 +12,4 @@ alias -g HOSTS='grep "^Host" ~/.ssh/config | cut -c6- | fzf --reverse --height=2
 alias vim="nvim"
 
 alias dots="chezmoi"
+alias use-pyenv='source "$XDG_CONFIG_HOME"/shell/pyenv.sh'
