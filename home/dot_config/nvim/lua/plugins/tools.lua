@@ -1,5 +1,5 @@
--- treesitter.lua
--- Specify your treesitter plugin here
+-- tools.lua
+-- Configure tools-related plugins for Neovim, including formatters and linters
 
 local mason_tool_packages = {
     "checkmake",

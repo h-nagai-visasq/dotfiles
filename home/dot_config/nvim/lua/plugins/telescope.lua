@@ -17,10 +17,12 @@ return {
         "https://github.com/nvim-telescope/telescope.nvim",
         keys = {
             { "<leader>:", "<cmd>Telescope commands<CR>", desc = "find Commands" },
-            { "<leader>?", "<cmd>Telescope keymaps<CR>", desc = "find Keymaps" },
+            { "<leader>,,", "<cmd>Telescope keymaps<CR>", desc = "find Keymaps" },
 
             { "<leader>ff", "<cmd>Telescope find_files<CR>", desc = "find Files" },
+            { "<leader>fG", "<cmd>Telescope git_files<CR>", desc = "find workspace Files" },
             { "<leader>fh", "<cmd>Telescope help_tags<CR>", desc = "find Help Tags" },
+            { "<leader>fx", "<cmd>Telescope grep_string<CR>", desc = "find current string" },
             { "<leader>fr", "<cmd>Telescope oldfiles<CR>", desc = "find Recently Files" },
 
             { "<leader>bb", "<cmd>Telescope buffers<CR>", desc = "find Buffers" },

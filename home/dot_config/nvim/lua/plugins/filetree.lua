@@ -1,5 +1,5 @@
--- lsp.lua
--- Specify your LSP plugin here
+-- filetree.lua
+-- Configure file tree-related plugins for Neovim
 
 return {
     {

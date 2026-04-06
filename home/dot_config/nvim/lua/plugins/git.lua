@@ -1,5 +1,5 @@
--- lsp.lua
--- Specify your LSP plugin here
+-- git.lua
+-- Configure Git-related plugins for Neovim
 
 return {
     {

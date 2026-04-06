@@ -1,5 +1,5 @@
--- lsp.lua
--- Specify your LSP plugin here
+-- diagnostic.lua
+-- Configure diagnostic-related plugins for Neovim
 
 return {
     {

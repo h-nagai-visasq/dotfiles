@@ -28,8 +28,8 @@ require("lazy").setup({
         -- functionality
         { import = "plugins.treesitter" },
         { import = "plugins.lsp" },
-        { import = "plugins.diagnostic" },
         { import = "plugins.completion" },
+        { import = "plugins.diagnostic" },
         { import = "plugins.git" },
 
         -- fuzzy finder
