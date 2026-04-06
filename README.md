@@ -5,7 +5,7 @@
 すべてのセットアップは `install.sh` 1 本で完了します。Homebrew が無い環境でも自動導入され、その後 chezmoi を経由して dotfiles 全体を適用します。
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/hidetoshing/dotfiles/master/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/hidetoshing/dotfiles/master/install.sh | bash
 ```
 
 ### このコマンドが行うこと
@@ -23,14 +23,14 @@ curl -fsSL https://raw.githubusercontent.com/hidetoshing/dotfiles/master/install
 
 ## レポジトリアーキテクチャ
 
-| ディレクトリ | 役割 |
-| --- | --- |
-| `Brewfile` | macOS / Linux 共通の CLI ツール (gh, ripgrep, mise など) |
-| `Brewfile.darwin` | macOS 専用の cask / GUI (wezterm 等) |
-| `mise.toml` | `node = "lts"`, `python = "3.11"` などランタイム定義 |
-| `.chezmoiroot` | `home/` を source ルートとして扱わせ、初回 `chezmoi apply` から全 dotfiles を適用 |
-| `home/.chezmoi.toml.tmpl` | OS 判定フラグ (`.data.is_darwin` など) を提供し、テンプレート側の条件分岐に活用 |
-| `home/` | 実際の dotfiles (`home/dot_config/...`) と run\_once/run\_onchange スクリプト |
+| ディレクトリ              | 役割                                                                              |
+| ------------------------- | --------------------------------------------------------------------------------- |
+| `Brewfile`                | macOS / Linux 共通の CLI ツール (gh, ripgrep, mise など)                          |
+| `Brewfile.darwin`         | macOS 専用の cask / GUI (wezterm 等)                                              |
+| `mise.toml`               | `node = "lts"`, `python = "3.11"` などランタイム定義                              |
+| `.chezmoiroot`            | `home/` を source ルートとして扱わせ、初回 `chezmoi apply` から全 dotfiles を適用 |
+| `home/.chezmoi.toml.tmpl` | OS 判定フラグ (`.data.is_darwin` など) を提供し、テンプレート側の条件分岐に活用   |
+| `home/`                   | 実際の dotfiles (`home/dot_config/...`) と run_once/run_onchange スクリプト       |
 
 ## OS ごとの挙動
 
@@ -41,13 +41,13 @@ curl -fsSL https://raw.githubusercontent.com/hidetoshing/dotfiles/master/install
 ## mise ランタイム管理
 
 - `mise.toml` に `node = "lts"`, `python = "3.11"` を定義
-- chezmoi の run\_onchange スクリプトが `mise install` を実行（`CHEZMOI_SKIP_MISE_INSTALL=1` で一時スキップ可能）
+- chezmoi の run_onchange スクリプトが `mise install` を実行（`CHEZMOI_SKIP_MISE_INSTALL=1` で一時スキップ可能）
 - ランタイムのバージョン固定や追加は `mise.toml` を編集し `chezmoi apply` を再実行するだけ
 
 ## 各種設定 (home/dot_config/)
 
-- **zsh**: XDG ベースの `~/.config/zsh` に `.zshrc/.zprofile/.zshalias/.zinit` を展開。zinit は `$XDG_DATA_HOME/zinit` 配下へ run\_once スクリプトで自動クローンされる。
-- **tmux**: `~/.config/tmux/tmux.conf` を展開し、TPM を run\_once で自動クローン。leader は `<C-t>`。
+- **zsh**: XDG ベースの `~/.config/zsh` に `.zshrc/.zprofile/.zshalias/.zinit` を展開。zinit は `$XDG_DATA_HOME/zinit` 配下へ run_once スクリプトで自動クローンされる。
+- **tmux**: `~/.config/tmux/tmux.conf` を展開し、TPM を run_once で自動クローン。leader は `<C-t>`。
 - **git**: `~/.config/git/config` と `ignore` を適用。エイリアスや `ghq.root` などを統合管理。
 - **starship**: `~/.config/starship.toml` を展開し、左側がリポジトリ、右側がランタイム／所要時間を表示。
 - **neovim**: `lazy.nvim` ベースの Lua 構成。`run_once_install-lazy-nvim.sh.tmpl` が lazy.nvim を所定のパスに展開し、`home/dot_config/nvim/**` を適用。
