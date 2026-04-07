@@ -7,7 +7,7 @@ local representative_servers = {
     "copilot",
     "docker_compose_language_service",
     "dockerls",
-    "gopls",
+    -- "gopls",
     "html",
     "lua_ls",
     "marksman",
