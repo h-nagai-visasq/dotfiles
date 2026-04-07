@@ -71,3 +71,8 @@ if command -v brew >/dev/null 2>&1; then
         $manpath
     )
 fi
+
+# load local .zprofile if exists
+if [[ -f "$HOME/.zprofile" ]]; then
+    source "$HOME/.zprofile"
+fi
