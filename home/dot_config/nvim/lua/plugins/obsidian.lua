@@ -1,6 +1,6 @@
 return {
     {
-        dir = "~/src/github.com/hidetoshing/obsidianus.nvim",
+        "https://github.com/hidetoshing/obsidianus.nvim",
         cmd = { "Obsidian" },
         keys = {
             { "<leader>oo", "<cmd>Obsidian<CR>", desc = "Open Obsidian vauld" },
