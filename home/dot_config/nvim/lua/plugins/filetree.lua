@@ -17,6 +17,7 @@ return {
             { "<leader>ef", "<cmd>Neotree float<CR>", desc = "Float File Tree" },
             { "<leader>eq", "<cmd>Neotree close<CR>", desc = "Close File Tree" },
             { "<leader>eb", "<cmd>Neotree buffer<CR>", desc = "Buffer Tree" },
+            { "<leader>eg", "<cmd>Neotree float git_status<CR>", desc = "Git Status Tree" },
         },
         opts = {
             open_files_using_relative_paths = true,

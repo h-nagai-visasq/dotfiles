@@ -22,6 +22,32 @@ mkdir -p "${HISTFILE:h}"
 HISTSIZE=100000
 SAVEHIST=$HISTSIZE
 
+# starship prompt
+if command -v starship >/dev/null 2>&1; then
+    eval "$(starship init zsh)"
+fi
+
+# zoxide setup
+if command -v zoxide >/dev/null 2>&1; then
+    eval "$(zoxide init zsh --cmd j)"
+fi
+
+# mise setup
+if command -v mise >/dev/null 2>&1; then
+    eval "$(mise activate zsh)"
+fi
+
+# load aliases
+source "$XDG_CONFIG_HOME"/zsh/.zshalias
+if [[ -f "$HOME/.zshalias" ]]; then
+    source "$HOME/.zshalias"
+fi
+
+# load local .zshrc if exists
+if [[ -f "$HOME/.zshrc" ]]; then
+    source "$HOME/.zshrc"
+fi
+
 # Docker & other completion directories
 if [[ -d "$HOME/.docker/completions" ]]; then
     fpath=("$HOME/.docker/completions" $fpath)
@@ -32,29 +58,6 @@ autoload -U compinit
 if [[ -z ${_compinit_initialized:-} ]]; then
     compinit
     typeset -g _compinit_initialized=1
-fi
-
-# starship prompt
-eval "$(starship init zsh)"
-
-# load aliases
-source "$XDG_CONFIG_HOME"/zsh/.zshalias
-
-if [[ -f "$HOME/.zshalias" ]]; then
-    source "$HOME/.zshalias"
-fi
-
-# load local .zshrc if exists
-if [[ -f "$HOME/.zshrc" ]]; then
-    source "$HOME/.zshrc"
-fi
-
-# zoxide setup
-eval "$(zoxide init zsh --cmd j)"
-
-# mise setup
-if command -v mise >/dev/null 2>&1; then
-    eval "$(mise activate zsh)"
 fi
 
 if [[ -d "$XDG_CONFIG_HOME"/zsh/plugins ]]; then
